@@ -1,0 +1,20 @@
+.acoes {
+    text-align: center;
+}
+
+.pesquisa-vazia {
+    padding: 2rem;
+    color: darkslategray;
+}
+
+.pesquisa-vazia p {
+    margin-left: 1rem;
+    margin-top: 0.51rem;
+}
+
+@media screen and (max-width: 40em) {
+    .acoes {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}

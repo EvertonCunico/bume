@@ -1,0 +1,2 @@
+<p-autoComplete [formControl]='formCtrl' [suggestions]="sugestoesFiltrado" [size]="30" [minLength]="1" [dataKey]='dataKey' [minLength]='minLength' [maxlength]='maxlength ?? 999' field='autoCompleteLabel' [emptyMessage]='emptyMessage' [forceSelection]='true'
+                [dropdown]="true" (completeMethod)="pesquisar($event)" appendTo="body"></p-autoComplete>

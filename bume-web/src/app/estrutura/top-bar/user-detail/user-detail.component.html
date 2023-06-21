@@ -1,0 +1,51 @@
+<a href="javascript:void(0)" class="profile" (click)="app.onTopbarMenuButtonClick($event)">
+    <span class="username" *ngIf='nomeUsuario'><i class="fa-light fa-user"></i> &nbsp;{{ nomeUsuario }}</span>
+    <i class="fa-light fa-chevron-down"></i>
+</a>
+<ul class="topbar-menu fadeInDown" [ngClass]="{'topbar-menu-visible': app.topbarMenuActive}">
+    <li>
+        <a href="javascript:void(0)" (click)="acessarPerfil()">
+            <i class="topbar-icon fa-light fa-id-card-clip"></i>
+            <span class="topbar-item-name"> Perfil</span>
+        </a>
+        <a href="javascript:void(0)" (click)="alterarSenhaDialog = true">
+            <i class="topbar-icon fa-light fa-key"></i>
+            <span class="topbar-item-name"> Alterar Senha</span>
+        </a>
+        <a href="javascript:void(0)" (click)="logout($event)">
+            <i class="topbar-icon fa-light fa-person-to-door"></i>
+            <span class="topbar-item-name"> Sair</span>
+        </a>
+    </li>
+</ul>
+<div [formGroup]='formAlterarSenha'>
+    <div class="ui-fluid">
+        <div class="p-grid">
+            <div class='p-col-12 p-md-12'>
+                <p-dialog [(visible)]="alterarSenhaDialog" [style]="{width: '550px'}"
+                          [modal]="true" styleClass="p-fluid">
+                    <p-header><i class="fa-light fa-key"></i> Alterar Senha</p-header>
+                    <div class="p-grid ui-fluid">
+                        <div class="p-col-7">
+                            <label for="senha-atual">Senha atual*:</label>
+                            <input id="senha-atual" formControlName="senhaAtual" type="password"/>
+                        </div>
+                        <div class="p-col-7">
+                            <label for="nova-senha">Nova senha*:</label>
+                            <input id="nova-senha" formControlName="senhaNova" type="password"/>
+                        </div>
+                        <div class="p-col-7">
+                            <label for="confirmar-senha">Confirmar nova senha*:</label>
+                            <input id="confirmar-senha" formControlName="senhaConfirmacao" type="password">
+                        </div>
+                    </div>
+
+                    <p-footer>
+                        <button class="p-button-text" (click)="validarSenha()"><i class="fa-light fa-check"></i> Alterar Senha</button>
+                        <button (click)="cancelarAlterarSenha()" ><i class="fa-light fa-xmark"></i> Cancelar</button>
+                    </p-footer>
+                </p-dialog>
+            </div>
+        </div>
+    </div>
+</div>

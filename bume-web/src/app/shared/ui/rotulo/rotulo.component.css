@@ -1,0 +1,9 @@
+.mensagem {
+    color: rgb(200, 90, 0);
+    display: block;
+    font-size: smaller;
+}
+
+.asterisco:required {
+    color: rgb(0, 90, 200);
+}

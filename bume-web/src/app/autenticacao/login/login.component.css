@@ -1,0 +1,60 @@
+.bg {
+    height: 100%;
+    background-image: url("/src/assets/imagens/login-background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: saturate(100%);
+}
+
+.cabecalho {
+    text-align: right;
+    padding: 16px;
+    width: 100%;
+    position: absolute;
+}
+
+.cabecalho > a {
+    color: white !important;
+}
+
+.card {
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.titulo > img {
+    margin-top: 2rem;
+    width: auto !important;
+}
+
+.controles {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.form {
+    padding: 0rem 2rem;
+}
+
+.mensagem {
+    max-width: 390px;
+    text-align: center;
+}
+
+.versao {
+    font-size: smaller;
+    color: lightslategray;
+}
+
+.p-col-1, .p-col-2, .p-col-3, .p-col-4, .p-col-5, .p-col-6, .p-col-7, .p-col-8, .p-col-9, .p-col-10, .p-col-11, .p-col-12 {
+    padding: 0.3rem !important;
+}

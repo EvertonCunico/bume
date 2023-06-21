@@ -1,0 +1,72 @@
+<p-card>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <app-controles-pesquisa  [placeholder]='placeHolderControles'
+              [exibirBotaoNovo]='acoes.incluir ?? false'
+              [exibirBotaoFiltros]='acoes.filtrar ?? false'
+              (pesquisar)='onPesquisar($event)'>
+                <ng-content selector='.form-filtros'></ng-content>
+            </app-controles-pesquisa>
+        </div>
+        <div class="p-col-12">
+            <p-table [value]='resultadoPesquisa?.data ?? []' [lazy]="true" (onLazyLoad)="onCarregarRegistros($event)" [totalRecords]="this.resultadoPesquisa?.totalRows ?? 0" [loading]="pesquisando" [rows]="this.resultadoPesquisa?.pageSize ?? 0" [autoLayout]='true' [responsive]='true'
+                [lazyLoadOnInit]='false' [alwaysShowPaginator]='true' [rowHover]="true" [paginator]="this.exibirPaginator" paginatorPosition='both' [showCurrentPageReport]="true" currentPageReportTemplate="Exibindo {first} a {last} de {totalRecords} registros">
+                <ng-template pTemplate="caption">
+                    {{ rotulo }}
+                </ng-template>
+                <ng-template pTemplate='header'>
+                    <tr>
+                        <th *ngFor="let col of colunas">
+                            {{col.header}}
+                        </th>
+                        <th style="width: 60px;" *ngIf='acoes && (acoes.visualizar || acoes.editar || acoes.acao1)'>Ações</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate='body' let-item>
+                    <tr class='ui-selectable-row'>
+                        <td *ngFor="let col of colunas">
+                            <span class="ui-column-title">{{ col.header }}</span>
+                            <span>{{ col.subField ? item[col.field][col.subField] : item[col.field] | campo:col }}</span>
+                        </td>
+                        <td *ngIf='acoes && (acoes.visualizar || acoes.editar || acoes.acao1)' class='acoes'>
+                            <span class="ui-column-title">Ações</span>
+                            <a [routerLink]='"../" + item[colunas[0].field]' *ngIf='acoes.editar'>
+                                <i class='fa-light fa-pencil'>
+                                </i>
+                            </a>
+                            <a [routerLink]='"../" + item[colunas[0].field]' *ngIf='acoes.visualizar && !acoes.editar'>
+                                <i class='fa-light fa-eye'>
+                                </i>
+                            </a>
+                            <!-- Se houver ícone configurado para ação 1, exibe botão-->
+                            <a (click)='onAcao1(item)' *ngIf='acoes.acao1'>
+                                <i class='fa-light fa-eye'></i>
+                            </a>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td [attr.colspan]="colunas.length + 1">
+                            <div class='pesquisa-vazia' *ngIf='!executouUmaPesquisa'>
+                                Utilize os comandos da tela para pesquisar registros:<br>
+                                <p>
+                                    <i class='fa-light fa-plus'></i> Novo registro
+                                </p>
+                                <p>
+                                    <i class='fa-light fa-filter'></i> Exibir filtros
+                                </p>
+                                <p>
+                                    <i class='fa-light fa-search'></i> Executar pesquisa
+                                </p>
+                            </div>
+                            <div class='pesquisa-vazia' *ngIf='executouUmaPesquisa'>
+                                Nenhum registro encontrado para os filtros configurados.<br><br>Revise os filtros e tente novamente.
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</p-card>
