@@ -1,0 +1,22 @@
+.nome-sistema {
+    color: #EEE;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.logo-sistema > svg {
+    margin-top: 3px;
+}
+
+.logo-sistema > img {
+    margin-top: 0px;
+    margin-left: -115px;
+}
+
+.topbar > a:hover {
+    color: #FFF;
+    fill:  #FFF;
+}

@@ -1,0 +1,10 @@
+<div class="p-grid ui-fluid">
+    <div class="p-col info-registro">
+        {{ registroId ? 'Código ' + registroId : 'Novo registro' }}
+    </div>
+    <div class="p-col-fixed controles">
+        <button type='button' pButton icon='fa-light fa-plus' (click)='novoClick()' *ngIf='exibirBotaoNovo'></button>
+        <button type='button' pButton icon='fa-light fa-trash' class="ui-button-danger" (click)='deletarClick()' *ngIf='exibirBotaoDeletar'></button>
+        <button type='button' pButton icon='fa-light fa-close' class="ui-button-secondary" [routerLink]="['../pesquisa']" routerLinkActive="router-link-active" *ngIf='exibirPesquisar'></button>
+    </div>
+</div>

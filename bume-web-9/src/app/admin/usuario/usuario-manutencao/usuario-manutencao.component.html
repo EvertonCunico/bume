@@ -1,0 +1,98 @@
+<app-manutencao
+        [acoes]='{ incluir: true, atualizar: true, deletar: true, visualizar: false, pesquisar: true, cancelar: true}'>
+    <p-card>
+        <div [formGroup]='form'>
+            <p-tabView>
+                <p-tabPanel header="Dados do Usuário" leftIcon="fa-light fa-user">
+                    <div class="ui-fluid">
+                        <p-fieldset legend="Dados básicos">
+                            <div class="p-grid p-nogutter">
+                                <div style="margin-left: 1%" class="p-col p-grid">
+                                    <div class='p-col-12 p-md-12'>
+                                        <app-rotulo rotulo='Nome'>
+                                            <input formControlName="nome" appAutofocus pInputText type='text'
+                                                   maxlength="100"/>
+                                        </app-rotulo>
+                                    </div>
+                                    <div class='p-col-12 p-md-6'>
+                                        <app-rotulo rotulo='Login'>
+                                            <input formControlName="login" pInputText type='text' maxlength="100"/>
+                                        </app-rotulo>
+                                    </div>
+                                    <div class='p-col-12 p-md-6'>
+                                        <app-rotulo rotulo='senha' *ngIf="!idUsuario">
+                                            <input formControlName="senha" pInputText type='password' maxlength="100"/>
+                                        </app-rotulo>
+                                    </div>
+                                    <div class='p-col-12 p-md-4'>
+                                        <app-rotulo rotulo='CPF'>
+                                            <p-inputMask formControlName="cpf"
+                                                         mask="999.999.999-99"></p-inputMask>
+                                        </app-rotulo>
+                                    </div>
+                                    <div class='p-col-12 p-md-4'>
+                                        <app-rotulo rotulo='Data de nascimento'>
+                                            <app-date-picker formControlName='dataNascimento'>
+                                            </app-date-picker>
+                                        </app-rotulo>
+                                    </div>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Contato">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='Telefone Celular'>
+                                        <p-inputMask formControlName="telefoneCelular" mask="(99) 9999-9999?9"
+                                                     value="telefoneCelular"></p-inputMask>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='E-mail'>
+                                        <input formControlName="email" pInputText type='email' maxlength="100"
+                                               [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched"/>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Acessibilidade">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-2'>
+                                    <app-rotulo rotulo='Ativo'>
+                                        <p-dropdown formControlName="ativo" [options]='situacoes'
+                                                    [autoDisplayFirst]='true'></p-dropdown>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Permissões">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-2'>
+                                    <app-rotulo rotulo='Perfil de Acesso'>
+                                        <p-dropdown formControlName="tipoAcesso" [options]='permissoes'
+                                                    [autoDisplayFirst]='true'></p-dropdown>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset *ngIf="idUsuario" legend="Alterar Senha">
+                            <div [formGroup]='formAlterarSenha'>
+                                <div class="p-grid">
+                                    <div class='p-col-12 p-md-3'>
+                                        <app-rotulo rotulo='Senha'>
+                                            <input formControlName="senha" pInputText type='text' maxlength="16"/>
+                                        </app-rotulo>
+                                    </div>
+                                    <div class='p-col-12 p-md-3'>
+                                        <button type="button" style="margin-top: 7%" pButton (click)="validarSenha()" class="ui-button-success"
+                                                label="Alterar Senha" icon="pi pi-lock"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                    </div>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </p-card>
+</app-manutencao>

@@ -1,0 +1,32 @@
+<div class='ui-fluid'>
+    <div class='p-grid'>
+        <div class='p-col-12 p-md-2' *ngIf="pesquisado">
+            <button pButton type="button" label="Relatório" icon='fa-light fa-print' (click)="relatorio()"></button>
+        </div>
+    </div>
+</div>
+<app-pesquisa [formFiltros]='formFiltros' [service]='relatorioPesquisaClienteSemCompra' [colunas]='colunas' [acoes]='{ editar: false, incluir: false, visualizar: false, filtrar: true, pesquisar: false }' placeHolderControles='pesquisar por nome' (pesquisaConcluida)='pesquisaConcluida($event)'>
+    <div class='form-filtros'>
+        <div [formGroup]='formFiltros'>
+            <div class='ui-fluid'>
+                <div class='p-grid'>
+                    <div class='p-col-12 p-md-4'>
+                        <app-rotulo rotulo='Nome'>
+                            <input formControlName='nome' pInputText type='text' maxlength="100" />
+                        </app-rotulo>
+                    </div>                   
+                    <div class='p-col-12 p-md-4'>
+                        <app-rotulo rotulo='Data Inicial'>
+                            <app-date-picker formControlName="dataInicial" ></app-date-picker>
+                        </app-rotulo>
+                    </div>                   
+                    <div class='p-col-12 p-md-4'>
+                        <app-rotulo rotulo='Data Final'>
+                            <app-date-picker formControlName="dataFinal" ></app-date-picker>
+                        </app-rotulo>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-pesquisa>

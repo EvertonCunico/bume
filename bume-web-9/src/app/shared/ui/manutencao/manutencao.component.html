@@ -1,0 +1,3 @@
+<app-form-toolbar [registroId]='registroId' [acoes]='acoes' (deletar)='deletar()' (novo)='novo()'></app-form-toolbar>
+<ng-content></ng-content>
+<app-form-controles [registroId]='registroId' [acoes]='acoes' (salvar)='salvar()' (cancelar)='cancelar()'></app-form-controles>

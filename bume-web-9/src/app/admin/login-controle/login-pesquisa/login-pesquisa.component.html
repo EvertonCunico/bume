@@ -1,0 +1,53 @@
+<app-pesquisa [formFiltros]='formFiltros'
+              [service]='loginControlePesquisaService'
+              [colunas]='colunas'
+              [acoes]='{ editar: false, incluir: false, visualizar: false, filtrar: true, pesquisar: true }'
+              placeHolderControles='pesquisar por nome do usuário'>
+  <div class='form-filtros'>
+    <div [formGroup]='formFiltros'>
+      <div class='ui-fluid'>
+        <div class='p-grid'>
+          <div class="p-col-12 p-md-2">
+            <app-rotulo rotulo="Perfil">
+              <p-dropdown formControlName="perfil" [options]="perfil" [showClear]="true">
+              </p-dropdown>
+            </app-rotulo>
+          </div>
+          <div class="p-col-12 p-md-3">
+            <app-rotulo rotulo="Status">
+              <p-dropdown formControlName="loginControleStatus" [options]="loginControleStatus" [showClear]="true">
+              </p-dropdown>
+            </app-rotulo>
+          </div>
+          <div class="p-col-12 p-md-4">
+            <app-rotulo rotulo="Usuário">
+              <app-autocomplete url='usuario/pesquisa' dataKey='id' label='{id} - {nome}' formControlName='idUsuario'></app-autocomplete>
+            </app-rotulo>
+          </div>
+          <div class="p-col-12 p-md-3">
+            <app-rotulo rotulo="Estabelecimento">
+              <app-autocomplete url='estabelecimento/pesquisa' dataKey='id' label='{nome}' formControlName='idEstabelecimento'></app-autocomplete>
+            </app-rotulo>
+          </div>
+          <div class='p-col-12 p-md-4'>
+            <app-rotulo rotulo='IP'>
+              <input formControlName='ipParcial' pInputText type='text'/>
+            </app-rotulo>
+          </div>
+          <div class='p-col-12 p-md-4'>
+            <app-rotulo rotulo='Data Hora Inicial'>
+              <app-date-picker [exibirHora]="true" formControlName='dataHoraInicio'>
+              </app-date-picker>
+            </app-rotulo>
+          </div>
+          <div class='p-col-12 p-md-4'>
+            <app-rotulo rotulo='Data Hora Final'>
+              <app-date-picker [exibirHora]="true" formControlName='dataHoraFim'>
+              </app-date-picker>
+            </app-rotulo>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-pesquisa>

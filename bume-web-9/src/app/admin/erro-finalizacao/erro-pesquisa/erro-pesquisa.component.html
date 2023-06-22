@@ -1,0 +1,41 @@
+<app-pesquisa [formFiltros]='formFiltros' [service]='erroPesquisaService' [colunas]='colunas' [acoes]='{ editar: false, incluir: false, visualizar: true, filtrar: true, pesquisar: true }' placeHolderControles='pesquisar por nome'>
+    <div class='form-filtros'>
+        <div [formGroup]='formFiltros'>
+            <div class='ui-fluid'>
+                <div class='p-grid'>
+                    <div class="p-col-12 p-md-4">
+                        <app-rotulo rotulo="Estabelecimento">
+                            <app-autocomplete url='estabelecimento/pesquisa' dataKey='id' label='{id} - {nome}' formControlName='estabelecimento'></app-autocomplete>
+                        </app-rotulo>
+                    </div>
+                    <div class="p-col-12 p-md-4">
+                        <app-rotulo rotulo="Mesa">
+                            <app-autocomplete url="estabelecimento/mesa/pesquisa?estabelecimento={{estabelecimentoId}}" dataKey='id' label='{id} - {descricao}' formControlName='mesa'></app-autocomplete>
+                        </app-rotulo>
+                    </div>
+                    <div class="p-col-12 p-md-4">
+                        <app-rotulo rotulo="Cliente">
+                            <app-autocomplete url='usuario/pesquisa?grupo=CLIENTE' dataKey='id' label='{id} - {nome}' formControlName='cliente'></app-autocomplete>
+                        </app-rotulo>
+                    </div>
+                    <div class="p-col-12 p-md-4">
+                        <app-rotulo rotulo="Situação">
+                            <p-dropdown formControlName="situacao" [options]="situacoes" [showClear]="true">
+                            </p-dropdown>
+                        </app-rotulo>
+                    </div>
+                    <div class='p-col-12 p-md-4'>
+                        <app-rotulo rotulo='Data inicial'>
+                            <p-inputMask formControlName="dataInicial" mask="99/99/9999" placeholder="99/99/9999" slotChar="dd/mm/aaaa"></p-inputMask>
+                        </app-rotulo>
+                    </div>
+                    <div class='p-col-12 p-md-4'>
+                        <app-rotulo rotulo='Data final'>
+                            <p-inputMask formControlName="dataFinal" mask="99/99/9999" placeholder="99/99/9999" slotChar="dd/mm/aaaa"></p-inputMask>
+                        </app-rotulo>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-pesquisa>

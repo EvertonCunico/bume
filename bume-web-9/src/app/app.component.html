@@ -1,0 +1,43 @@
+<p-toast sticky='false' life='3600000'>
+    <ng-template let-message let-level pTemplate="message">
+        <div class="ui-toast-custom">
+            <div class="ui-toast-custom-icon"><i class="fa-light fa-2x
+                {{level.severity == 'info' ? 'fa-circle-info' : ''}}
+                {{level.severity == 'success' ? 'fa-circle-check' : ''}}
+                {{level.severity == 'warn' ? 'fa-seal-exclamation' : ''}}
+                {{level.severity == 'error' ? 'fa-circle-xmark' : ''}}"></i></div>
+            <div class="ui-toast-custom-message">
+                <h3 style="margin-bottom: .5em">{{message.summary}}</h3>
+                <p>{{message.detail}}</p>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+
+<app-app-base>
+    <div class="layout-wrapper layout-static" (click)="onLayoutClick()" [ngClass]="{'layout-static-inactive': staticMenuDesktopInactive,
+                    'layout-mobile-active': staticMenuMobileActive}">
+
+        <app-topbar></app-topbar>
+
+        <div class="layout-menu-container" (click)="onMenuClick()">
+            <div class="layout-menu-content">
+                <div class="layout-menu-title"><img style="margin-left: -23px;margin-bottom: -8px;height: 30px; width: 70px" src="assets/imagens/logo73x32.png"><span style="text-align: start">Bume</span></div>
+                <app-menu></app-menu>
+            </div>
+        </div>
+
+        <div class="layout-content">
+            <app-breadcrumb></app-breadcrumb>
+            <div class="layout-content-container">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="layout-mask" *ngIf="staticMenuMobileActive"></div>
+        </div>
+    </div>
+</app-app-base>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <img src="assets/imagens/logo.png" style="max-width:200px;max-height:200px" />
+    <p style="font-size: 20px; color: white; text-align:center">Carregando...</p>
+</ngx-spinner>

@@ -1,0 +1,58 @@
+<p-sidebar [(visible)]='visivel' fullScreen='true' [style]='{ padding: 0 }' [showCloseIcon]='false' [dismissible]='false' [closeOnEscape]='false' appendTo='body'>
+    <div class='bg'>
+        <div class='card'>
+            <form [formGroup]='formEsqueciSenha' (ngSubmit)="submeterFormRecuperarSenha()">
+                <p-card>
+                    <p-header>
+                        <div class='titulo'>
+                            <img src='assets/imagens/logo.png'>
+                        </div>
+                    </p-header>
+                    <div class='ui-fluid form'>
+                        <div class='p-grid'>
+                            <div class='p-col-12'>
+                                <app-rotulo rotulo='CPF'>
+                                    <p-inputMask formControlName="cpf" mask="999.999.999-99"></p-inputMask>
+                                </app-rotulo>
+                            </div>
+                            <div class='p-col-12'>
+                                <app-rotulo rotulo='Data de Nascimento'>
+                                    <app-date-picker formControlName="dataNascimento">
+                                    </app-date-picker>
+                                </app-rotulo>
+                            </div>
+                            <div class='p-col-12'>
+                                <app-rotulo rotulo='E-mail'>
+                                    <input formControlName="email" pInputText appAutofocus type='email' />
+                                </app-rotulo>
+                            </div>
+                        </div>
+                    </div>
+                    <p-footer>
+                        <div class='mensagem' *ngIf='msgErroLogin'>
+                            <p-message severity='warn' [text]='msgErroLogin'></p-message>
+                        </div>
+                        <div class='controles'>
+                            <div class='p-grid'>
+                                <div class='p-col-2'></div>
+                                <div class='p-col-4 ui-fluid'>
+                                    <button type='submit' pButton [disabled]='aguardar' label='Recuperar Senha'></button>
+                                </div>
+                                <div class='p-col-2 ui-fluid'>
+                                    <button type='submit' pButton [disabled]='aguardar' label='Voltar' routerLink="/login"></button>
+                                </div>
+                                <div class='p-col-4' style="text-align: left;">
+                                    <p-progressSpinner *ngIf='aguardar' [style]='{ width: "32px", height: "32px" }'>
+                                    </p-progressSpinner>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='versao'>
+                            {{ nomeApp }} {{ versao }}
+                        </div>
+                    </p-footer>
+                </p-card>
+            </form>
+        </div>
+    </div>
+</p-sidebar>

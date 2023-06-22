@@ -1,0 +1,51 @@
+<p-sidebar [(visible)]='visivel' fullScreen='true' [style]='{ padding: 0 }' [showCloseIcon]='false' [dismissible]='false' [closeOnEscape]='false' appendTo='body'>
+    <div class='bg'>
+        <div class='card'>
+            <form [formGroup]='formLogin' (ngSubmit)="submeterFormLogin()">
+                <p-card>
+                    <p-header>
+                        <div class='titulo'>
+                            <img src='assets/imagens/logo.png'>
+                        </div>
+                    </p-header>
+                    <div class='ui-fluid form'>
+                        <div class='p-grid'>
+                            <div class='p-col-12'>
+                                <app-rotulo rotulo='Usuário'>
+                                    <input formControlName='usulogin' pInputText appAutofocus type='text' />
+                                </app-rotulo>
+                            </div>
+                            <div class='p-col-12'>
+                                <label>Senha* </label>
+                                    <input formControlName='ususenha' pInputText type='password' />
+                            </div>
+                        </div>
+                    </div>
+                    <p-footer>
+                        <div class='mensagem' *ngIf='msgErroLogin'>
+                            <p-message severity='warn' [text]='msgErroLogin'></p-message>
+                        </div>
+                        <div class='controles'>
+                            <div class='p-grid'>
+                                <div class='p-col-4'></div>
+                                <div class='p-col-4 ui-fluid'>
+                                    <button type='submit' pButton [disabled]='aguardar' label='Acessar'></button>
+                                    <br>
+                                    <br>
+                                    <a  routerLink="/esqueci-senha">Esqueci a senha</a>
+                                </div>
+                                <div class='p-col-4' style="text-align: left;">
+                                    <p-progressSpinner *ngIf='aguardar' [style]='{ width: "32px", height: "32px" }'>
+                                    </p-progressSpinner>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='versao'>
+                            {{ nomeApp }} {{ versao }}
+                        </div>
+                    </p-footer>
+                </p-card>
+            </form>
+        </div>
+    </div>
+</p-sidebar>

@@ -1,0 +1,203 @@
+@import url('https://kit-pro.fontawesome.com/releases/v6.4.0/css/pro.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.dlg-novo-lancamento-empresa {
+    width: 800px;
+}
+
+@media screen and (max-width: 40em) {
+    .dlg-novo-lancamento-empresa {
+        width: 90vw;
+    }
+}
+
+.dlg-nova-troca-empresa {
+    width: 1000px;
+}
+
+@media screen and (max-width: 40em) {
+    .dlg-nova-troca-empresa {
+        width: 90vw;
+    }
+}
+
+.espacamento>* {
+    margin-right: 5px !important;
+}
+
+.card-container>* {
+    margin-bottom: 10px !important;
+}
+
+.sem-rotulo {
+    align-self: center;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #2868a9;  
+}
+
+
+
+/* TOAST */
+
+.ui-toast {
+    padding: 1em;
+    padding: 0;
+    margin: 0;
+}
+.ui-toast .ui-toast-message-content {
+    padding: 1em;
+}
+
+.ui-toast .ui-toast-message.ui-shadow {
+    -webkit-box-shadow: 0px 10px 15px -2px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 10px 15px -2px rgba(0,0,0,0.25);
+    box-shadow: 0px 10px 15px -2px rgba(0,0,0,0.25);
+}
+
+body .ui-toast .ui-toast-message {
+    border-radius: 5px;
+    border: 1px solid silver;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.ui-toast-close-icon {
+    text-decoration: none;
+    color: inherit !important;
+    right: .75em !important;
+    top: .75em !important;
+
+}
+.ui-toast-close-icon:hover {
+    text-decoration: none;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-info {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-warn {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.ui-toast-custom {
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+}
+.ui-toast-custom .ui-toast-custom-icon {
+    margin-right: 1em;
+}
+
+.ui-toast-custom i.fa-light {
+    font-size: 2em;
+}
+
+.ui-toast-custom .ui-toast-custom-message {
+    flex-grow: 1;
+    margin-right: .5em;
+}
+
+.ui-toast-custom .ui-toast-custom-message h1,
+.ui-toast-custom .ui-toast-custom-message h2,
+.ui-toast-custom .ui-toast-custom-message h3,
+.ui-toast-custom .ui-toast-custom-message h4,
+.ui-toast-custom .ui-toast-custom-message p
+{
+    margin: 0;
+}
+
+
+
+/* BUTTONS */
+body .ui-button {
+    background-color: #007bff;
+    border-color: #0069d9;
+}
+body .ui-button:enabled:hover {
+    background-color: #0069d9;
+}
+
+body .ui-button.ui-state-default.ui-button-secondary, body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default {
+    background-color: #6c757d;
+    border-color: #5a6268;
+    color: #fff;
+}
+body .ui-button.ui-state-default.ui-button-secondary:enabled:hover, body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default:enabled:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+    color: #fff;
+}
+body .ui-button.ui-state-default.ui-button-warn, body .ui-buttonset.ui-button-warn > .ui-button.ui-state-default {
+    background-color: #ffc107;
+    border-color: #e0a800;
+    color: #212529;
+}
+body .ui-button.ui-state-default.ui-button-warn:enabled:hover, body .ui-buttonset.ui-button-warn > .ui-button.ui-state-default:enabled:hover {
+    background-color: #e0a800;
+}
+body .ui-button.ui-state-default.ui-button-danger, body .ui-buttonset.ui-button-danger > .ui-button.ui-state-default {
+    background-color: #dc3545;
+    border-color: #c82333;
+}
+body .ui-button.ui-state-default.ui-button-danger:enabled:hover, body .ui-buttonset.ui-button-danger > .ui-button.ui-state-default:enabled:hover {
+    background-color: #c82333;
+}
+body .ui-button.ui-state-default.ui-button-success, body .ui-buttonset.ui-button-success > .ui-button.ui-state-default {
+    background-color: #28a745;
+    border-color: #218838;
+}
+body .ui-button.ui-state-default.ui-button-success:enabled:hover, body .ui-buttonset.ui-button-success > .ui-button.ui-state-default:enabled:hover {
+    background-color: #218838;
+}
+
+
+
+/* TABLES */
+body .ui-tabview .ui-tabview-panels {
+    padding: 1em;
+    position: relative;
+}

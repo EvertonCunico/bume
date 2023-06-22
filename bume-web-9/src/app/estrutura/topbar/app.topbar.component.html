@@ -1,0 +1,9 @@
+<div class="topbar clearfix">
+    <a class='logo-sistema' routerLink='/'>
+        <img src="assets/imagens/logo73x32.png">
+    </a>
+    <a id="menu-button" href="#" (click)="app.onMenuButtonClick($event)">
+        <i class="fa-light fa-bars"></i>
+    </a>
+    <app-user-detail [loginInfo]='loginInfo'></app-user-detail>
+</div>

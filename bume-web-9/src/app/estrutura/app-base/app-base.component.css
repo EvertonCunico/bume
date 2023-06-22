@@ -1,0 +1,11 @@
+.bloqueio {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    display: block;
+    background-color: black;
+    opacity: 0.25;
+    z-index: 999999;
+}

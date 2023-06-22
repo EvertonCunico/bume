@@ -1,0 +1,45 @@
+<p-card>
+    <p-header>
+        <h4>
+            Testes em APIs
+        </h4>
+    </p-header>
+    <form [formGroup]='formTest' (ngSubmit)='submeterFormTest()'>
+        <div class='ui-fluid'>
+            <div class='p-grid'>
+                <div class='p-col-5'>
+                    <app-rotulo rotulo='API'>
+                        <input formControlName='api' pInputText type='text' />
+                    </app-rotulo>
+                </div>
+                <div class='p-col-5'>
+                    <app-rotulo rotulo='Endpoint'>
+                        <input formControlName='endPoint' pInputText type='text' />
+                    </app-rotulo>
+                </div>
+                <div class='p-col-2'>
+                    <app-rotulo rotulo='Verbo'>
+                        <p-dropdown [options]='verbos' formControlName="verbo"></p-dropdown>
+                    </app-rotulo>
+                </div>
+                <div class='p-col-12'>
+                    <app-rotulo rotulo='URL do método'>
+                        {{ url }}
+                    </app-rotulo>
+                </div>
+                <div class='p-col-12'>
+                    <app-rotulo rotulo='Dados'>
+                        <textarea pInputTextarea formControlName='dados' [rows]='20'></textarea>
+                    </app-rotulo>
+                    <div>Registros detectados: {{ dados ? dados.length : 0 }}</div>
+                </div>
+                <div class='p-col-2'>
+                    <button type='submit' pButton label='Executar' [disabled]='formTest.enabled && !formTest.valid'></button>
+                </div>
+                <div class='p-col-10'>
+                    <p-progressBar [value]="progresso"></p-progressBar>
+                </div>
+            </div>
+        </div>
+    </form>
+</p-card>

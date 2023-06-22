@@ -1,0 +1,52 @@
+.box-stretched {
+    width: 100%;
+    height: 100%;
+}
+
+.box-stretched>* {
+    width: 100%;
+    height: auto;
+}
+
+:host ::ng-deep .ui-tabview-panels {
+    display: inline-block;
+    width: 100%;
+}
+
+.financeiro {
+    display: block;
+}
+
+.financeiro>table {
+    width: 50%;
+}
+
+.o_form_label {
+    margin: 0 5px 0 0;
+    font-size: 14px;
+    padding: 0 15px 0 0;
+    line-height: 1.5;
+}
+
+.o_td_label {
+    border-right: 1px solid #ddd;
+    width: 0%;
+    padding: 0 15px 0 0;
+    min-width: 150px;
+}
+
+.o_td_label+td {
+    padding: 0px 36px 0px 8px;
+}
+
+.o_horizontal_separator {
+    color: #666666;
+    font-weight: bold;
+    font-size: 1.08333333rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+a:hover {
+    cursor: pointer;
+}

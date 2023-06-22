@@ -1,0 +1,41 @@
+<h3>Relatório de Usuários</h3>
+<div class='controles'>
+    <button pButton type="button" label="Gerar PDF" (click)="gerarPDF()" class="ui-button-success"></button>
+    <button pButton type="button" label="Cancelar" (click)="cancelar()" class="ui-button-secondary"></button>
+</div>
+<br><br>
+<div id="relatorio">
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 200px;"><img src="assets/imagens/logo.png" style="max-width:200px;max-height:200px" /></td>
+            <td valign="top" style="font-weight: bold;">
+                BUME - RELATÓRIO DE USUÁRIOS
+            </td>
+        </tr>
+    </table>
+    <p-panel header="Usuários" *ngIf="(usuarios) && (usuarios.length>0)">
+        <p-table [value]="usuarios" [resizableColumns]="true" [rows]="10000">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Estabelecimento</th>
+                    <th>Ativo</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuario>
+                <tr>
+                    <td>{{usuario.id}}</td>
+                    <td>{{usuario.nome ? usuario.nome : ''}}</td>
+                    <td>{{usuario.cpf ? usuario.cpf : ''}}</td>
+                    <td>{{usuario.telefone ? usuario.telefone : ''}}</td>
+                    <td>{{usuario.estabelecimento ? usuario.estabelecimento.nome : ''}}</td>
+                    <td>{{usuario.ativo ? getSituacao(usuario.ativo) : ''}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <span style="font-weight:bold">Total de Usuários nesta pesquisa: {{usuarios.length}}</span>
+    </p-panel>
+</div>

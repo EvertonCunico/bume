@@ -1,0 +1,13 @@
+.info-registro {
+    line-height: 33px;
+    vertical-align: bottom;
+}
+
+.controles {
+    width: auto;
+    align-items: flex-end;
+}
+
+.controles *:not(:last-child) {
+    margin-right: 5px;
+}

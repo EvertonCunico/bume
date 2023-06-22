@@ -1,0 +1,127 @@
+<app-manutencao [acoes]='{ incluir: true, atualizar: true, deletar: true, visualizar: false, pesquisar: true, cancelar: true}'>
+    <p-card>
+        <div [formGroup]='form'>
+            <p-tabView>
+                <p-tabPanel header="Dados do Usuário" leftIcon="fa-light fa-user">
+                    <div class="ui-fluid">
+                        <p-fieldset legend="Estabelecimento e localização">
+                            <div class="p-grid">
+                                <div *ngIf="estabelecimentoVisualizar" class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='Estabelecimento'>
+                                        <app-autocomplete url='estabelecimento/pesquisa' dataKey='id'
+                                                          label='{id} - {nome}'
+                                                          formControlName='estabelecimento'></app-autocomplete>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4' *ngIf="cidadeVisualizar">
+                                    <app-rotulo rotulo='Cidade'>
+                                        <app-autocomplete url='cidade/pesquisa' dataKey='id' label='{id} - {nome}'
+                                                          formControlName='cidade'></app-autocomplete>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4' *ngIf="cidadeVisualizar">
+                                    <app-rotulo rotulo='Cidade Selecionada'>
+                                        <app-autocomplete url='cidade/pesquisa' dataKey='id' label='{id} - {nome}'
+                                                          formControlName='cidadeSelecionada'></app-autocomplete>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Dados básicos">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-6'>
+                                    <app-rotulo rotulo='Nome'>
+                                        <input formControlName="nome" appAutofocus pInputText type='text'
+                                               maxlength="100"/>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-6'>
+                                    <app-rotulo rotulo='E-mail'>
+                                        <input formControlName="email" pInputText type='email' maxlength="100"
+                                               [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched"/>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='Login'>
+                                        <input formControlName="login" pInputText type='text' maxlength="100"/>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='CPF'>
+                                        <p-inputMask formControlName="cpf"
+                                                     (onBlur)="verificarCPFValido(this.form.get('cpf').value)"
+                                                     mask="999.999.999-99"></p-inputMask>
+                                        <span *ngIf="!cpfValido" style="color: red;">CPF inválido</span>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='Telefone'>
+                                        <p-inputMask formControlName="telefone" mask="(99) 9999-9999?9"
+                                                     value="telefone"></p-inputMask>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='Telefone para contato'>
+                                        <p-inputMask formControlName="telefoneContato"
+                                                     mask="(99) 9999-9999?9"></p-inputMask>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-4'>
+                                    <app-rotulo rotulo='Data de nascimento'>
+                                        <app-date-picker formControlName='dataNascimento'>
+                                        </app-date-picker>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Acessibilidade">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-2'>
+                                    <app-rotulo rotulo='Ativo'>
+                                        <p-dropdown formControlName="ativo" [options]='situacoes'
+                                                    [autoDisplayFirst]='true'></p-dropdown>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Permissões">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-4'>
+                                    <div *ngFor="let grupo of permissoes; let index = index">
+                                        <input type="checkbox" formArrayName="grupos"
+                                               (change)="onCheckboxChange($event, index)" [value]="grupo.value"
+                                               [checked]="grupo.checked"/>
+                                        {{grupo.label}}
+                                    </div>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                        <p-fieldset legend="Controle">
+                            <div class="p-grid">
+                                <div class='p-col-12 p-md-3'>
+                                    <app-rotulo rotulo='Data de inclusão'>
+                                        <app-date-picker exibirHora="true" formControlName='dataInclusao'>
+                                        </app-date-picker>
+                                    </app-rotulo>
+                                </div>
+                                <div class='p-col-12 p-md-3'>
+                                    <app-rotulo rotulo='Data de alteração'>
+                                        <app-date-picker exibirHora="true" formControlName='dataAlteracao'>
+                                        </app-date-picker>
+                                    </app-rotulo>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Termo de uso" leftIcon="fa-light fa-file-check">
+                    <app-pesquisa [formFiltros]='formFiltrosTermos' [service]='termoPesquisaService'
+                                  [colunas]='colunasTermos'
+                                  [acoes]='{ editar: false, incluir: false, visualizar: false, filtrar: false, pesquisar: true }'
+                                  placeHolderControles='pesquisar por título'>
+                    </app-pesquisa>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </p-card>
+</app-manutencao>
